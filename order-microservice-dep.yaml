@@ -55,7 +55,7 @@ data:
       endpoint:
         health:
           show-details: "ALWAYS"
-          probes:
+          probes: 
             enabled: true
         circuitbreakers:
           enabled: true 
