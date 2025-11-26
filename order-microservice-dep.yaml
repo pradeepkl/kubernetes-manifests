@@ -1,11 +1,11 @@
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: db-config
-data:
-  username: sa
-  url: jdbc:h2:mem:ordersdb
-  password: password
+#kind: ConfigMap
+#apiVersion: v1
+#metadata:
+#  name: db-config
+#data:
+#  username: sa
+#  url: jdbc:h2:mem:ordersdb
+#  password: password
 ---
 kind: ConfigMap
 apiVersion: v1
@@ -203,18 +203,18 @@ spec:
           value: dev
         - name: SPRING_DATASOURCE_URL
           valueFrom:
-            configMapKeyRef:
-              name: db-config
+            secretKeyRef:
+              name: db-credentials
               key: url
         - name: SPRING_DATASOURCE_USERNAME
           valueFrom:
-            configMapKeyRef:
-              name: db-config
+            secretKeyRef:
+              name: db-credentials
               key: username
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
-            configMapKeyRef:
-              name: db-config
+            secretKeyRef:
+              name: db-credentials
               key: password
         volumeMounts:
         - name: app-config
